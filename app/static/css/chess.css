@@ -1,5 +1,5 @@
 body{
-    background-color: #2e2e2e;
+    background-color: rgb(14, 14, 14);
     display: flex;
     flex-wrap: wrap;
     /* flex-flow: row wrap;
@@ -25,7 +25,7 @@ body{
 }
 
 #board-layout-sideboard{
-  background-color: #0e0e0e;
+  background-color: #2e2e2e;
   color: white;
   border-radius: 2%;
   padding:30px;
@@ -34,7 +34,7 @@ body{
   margin-top: 100px;
   display: block;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  height: 250px;
+  height: 350px;
 }
 
 .player-layout{

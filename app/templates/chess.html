@@ -5,12 +5,18 @@
     <title>Chess</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css"/>
+    <!-- <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/reset.css')}}"> -->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/chessboard-1.0.0.css')}}">
     <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/chess.css')}}">
-   
 </head>
 
 <body>
+<header>
+        <a href="/">
+            <img src="{{url_for('static',filename='img/botao-menu.png')}}" alt="Logo Início" class="logo">
+        </a>
+    </header>
     <div id="board-layout">
         <div id="board-layout-player-top" class="player-layout">
             <img src="https://static1.purebreak.com.br/articles/9/10/42/29/@/442929-dio-brando-e-um-vilao-bisexual-de-jojo-700x700-1.jpg" alt="">
@@ -42,17 +48,30 @@
                 <label style="margin:5px" for="customRange1" class="form-label">Depth</label><span id="danger" data-toggle="tooltip" data-placement="right" title="Placing depth above 3 will cause a high processing time." class="badge bg-danger">!</span>
                 <input type="range" class="form-range" min="1" max="4" id="depth" value="3" onchange="depthWarning()">
             </div>
+            
             <div id="fen"></div>
             <div id="record"></div>
             <div id="buttons">
-                <button type="button" class="btn btn-primary" onclick="reset()">Play as White</button>
-                <button type="button" class="btn btn-primary" onclick="invert()">Play as Black</button>
-                <button type="button" class="btn btn-primary" onclick="startSpeech()">Speak Start</button>
-                <button type="button" class="btn btn-primary" onclick="stopSpeech()">Speak Stop</button>
+                <div style="display: flex; justify-content: space-around;">
+                    <button type="button" class="btn btn-primary" onclick="reset()">Play as White</button>
+                    <button type="button" class="btn btn-primary" onclick="invert()">Play as Black</button>
+                    </div>
+                <ul class="mic-geral">    
+                    <div class="microfone">
+                        <img id="mic-image" src="{{url_for('static',filename='img/mic.png')}}" alt="mic button" class="imagem-mic"> 
+                    </div>
+                    <div class="switch__container">
+                        <input id="switch-shadow" class="switch switch--shadow" type="checkbox">
+                        <label for="switch-shadow"></label>
+                    </div>
+                </ul>
             </div>
-            <div id="status">
-                <img src="{{url_for('static',filename='img/loading.gif')}}" height="20px" width="20px">
-            </div>
+            
+            <br>
+            
+        </div>
+        <div id="status">
+            <img src="{{url_for('static',filename='img/loading.gif')}}" height="20px" width="20px">
         </div>
         <!-- <div>
         

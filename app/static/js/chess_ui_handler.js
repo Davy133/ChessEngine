@@ -83,6 +83,17 @@ function onDragStart (source, piece, position, orientation) {
     }
 }
 
+$("#switch-shadow").on("click", function() {
+    if($(this).is(":checked")) {
+        startSpeech();
+
+        $("#mic-image").attr("src", "/static/img/micdesmut.png")
+    } else {
+        stopSpeech();
+        $("#mic-image").attr("src", "/static/img/mic.png")
+    }
+});
+
 socket.on('thinking', function(msg) {
     board.draggable = false;
     if(msg == true) {

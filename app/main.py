@@ -3,11 +3,16 @@ from flask_socketio import SocketIO, emit
 import chessEngine
 
 app = Flask(__name__)
-socketio = SocketIO(app)
+app.config['SECRET_KEY'] = 'some super secret key!'
+socketio = SocketIO(app, logger=True)
 chess = chessEngine.ChessEngine()
 
 @app.route('/')
 def index():
+    return render_template('jogar.html')
+
+@app.route('/jogar')
+def jogar():
     return render_template('chess.html')
 
 @socketio.on('connect')

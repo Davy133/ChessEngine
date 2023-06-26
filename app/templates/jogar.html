@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Chess</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/reset.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@500&display=swap" rel="stylesheet">
+
+</head>
+
+<body style="max-width: 1500px;max-height: max-content;margin: 0 auto;background-image: url({{url_for('static',filename='img/fundo3.jpg')}});background-color: rgb(14, 14, 14);background-size: cover;font-family: 'Karla';color: beige;">
+    <header>
+            <a href="/">
+                <img src="{{url_for('static',filename='img/botao-menu.png')}}" alt="Logo Início" class="logo"/>
+            </a>
+            <div class="nome-meio">
+                <span>XADREZ - BOT</span>
+            </div>
+    </header>
+
+    <main>
+        <ul class="lista">
+            <li class="textos">
+                <span>
+                    Jogue contra nosso bot!
+                </span>
+            </li>
+            <li class="textos">
+                <p>
+                    Comandos de voz implementado! Consiga mexer
+                    suas peças apenas falando.
+                </p>
+            </li>
+        </ul>
+
+        <div class="botao-todo">
+            <a class="botao-jogar" href="/jogar">
+                <ul class="botao">
+                    JOGAR
+                </ul>
+            </a>
+        </div>
+    
+
+    </main>
+
+
+
+
+
+    
+
+</body>
+
+</html>
