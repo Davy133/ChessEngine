@@ -1,6 +1,6 @@
-from random import choice
 import chess
 class ChessEngine:
+
     def __init__(self):
         self.piece_values = {'P': 100, 'N': 280, 'B': 320, 'R': 479, 'Q': 929, 'K': 60000}
         self.pst = {
@@ -153,12 +153,7 @@ class ChessEngine:
                     file = chess.square_file(square)
                     pst_evaluation -= self.pst_b[piece.symbol().upper()][rank][file]
         return pst_evaluation
-
-    def make_random_move(self):
-        if self.game_over:
-            return
-        self.move = choice(self.valid_moves)
-
+    
     def make_move(self, move):
         try:
             if self.game_over:
@@ -184,7 +179,7 @@ class ChessEngine:
                     self.winner = 'draw'
             self.turn = 'w' if self.turn == 'b' else 'b'
             return self.get_game_state()
-        
+
         except Exception as e:
             self.board.pop()
             print('[!] Error making move - ' + move)
@@ -192,7 +187,8 @@ class ChessEngine:
             print(e)
             print('[!] END ERROR MESSAGE')
 
-        
+    #Getters
+
     def get_best_move(self,depth):
         try:
             board = chess.Board(self.get_game_state())

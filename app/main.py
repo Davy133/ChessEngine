@@ -1,16 +1,14 @@
 from flask import Flask, render_template
-from flask_socketio import SocketIO, emit, send
-
+from flask_socketio import SocketIO, emit
 import chessEngine
 
 app = Flask(__name__)
 socketio = SocketIO(app)
+chess = chessEngine.ChessEngine()
 
 @app.route('/')
 def index():
     return render_template('chess.html')
-
-chess = chessEngine.ChessEngine()
 
 @socketio.on('connect')
 def handle_connect():
@@ -19,29 +17,24 @@ def handle_connect():
 @socketio.on('speech')
 def handle_speech(msg):
     move = msg["speech"].lower().replace(" ", "")
-    result = chess.make_move(move)
-    if(result == False):
-        emit('game_state', chess.get_game_state())
-        return
-    emit('thinking', True)
-    best_move = chess.get_best_move(int(msg['depth']))
-    emit('thinking', False)
-    result = chess.make_move(best_move)
-    
-    emit('game_state', result)
+    process_move(move, int(msg.get('depth', 0)))
 
 @socketio.on('move')
 def handle_movement(data):
     move = data['source'] + data['target']
+    process_move(move, int(data.get('depth', 0)))
+
+def process_move(move, depth):
     result = chess.make_move(move)
-    if(result == False):
+    if not result:
         emit('game_state', chess.get_game_state())
         return
+
     emit('thinking', True)
-    best_move = chess.get_best_move(int(data['depth']))
+    best_move = chess.get_best_move(depth)
     emit('thinking', False)
-    result = chess.make_move(best_move)
     
+    result = chess.make_move(best_move)
     emit('game_state', result)
 
 @socketio.on('invert')
