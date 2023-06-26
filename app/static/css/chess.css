@@ -1,0 +1,64 @@
+body{
+    background-color: #2e2e2e;
+    display: flex;
+    flex-wrap: wrap;
+    /* flex-flow: row wrap;
+    align-content: space-between;
+    
+    justify-content: space-between; */
+}
+
+
+
+#board-layout{
+    margin: auto;
+    margin-right: 0;
+    width: 60rem;
+    padding: 10px;
+    flex-shrink: 0;
+}
+
+#board-layout-chessboard{
+    width: 80vh;
+    margin:0;
+    
+}
+
+#board-layout-sideboard{
+  background-color: #0e0e0e;
+  color: white;
+  border-radius: 2%;
+  padding:30px;
+  margin-right:100px;
+  margin-left: 0px;
+  margin-top: 100px;
+  display: block;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  height: 250px;
+}
+
+.player-layout{
+    display: flex;
+    align-self: stretch;
+    margin: 20px 20px 20px 5px;
+}
+.player-layout img {
+    width: 40px;
+    height: 40px;
+    border-radius: 10%;
+    margin-right: 10px;
+}
+
+.player-layout .player-name {
+    font-size: 15px;
+    color: white;
+    font-weight: 600;
+    font-family: 'Roboto', sans-serif;
+}
+
+.player-layout .player-ranking{
+    font-size: 15px;
+    color: rgb(199, 197, 197);
+    font-weight: 100;
+    font-family: 'Roboto', sans-serif;
+}

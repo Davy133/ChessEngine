@@ -188,7 +188,7 @@ class ChessEngine:
             print('[!] END ERROR MESSAGE')
 
     #Getters
-
+    
     def get_best_move(self,depth):
         try:
             board = chess.Board(self.get_game_state())

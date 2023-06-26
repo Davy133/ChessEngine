@@ -3,36 +3,78 @@
 
 <head>
     <title>Chess</title>
-    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/chessboard-1.0.0.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css"/>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/chessboard-1.0.0.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/chess.css')}}">
+   
 </head>
 
 <body>
-    
-    <div id="game" class="container" style="padding:60px; padding-left: 75px; padding-right: 75px;">
-        <h1>IxculaChess v0.0.1</h1>
-        <div class="row justify-content-md-center">
-            <div id="myBoard" class="col" style="margin:10px;"></div>
-            <div id="config" class="col">
+    <div id="board-layout">
+        <div id="board-layout-player-top" class="player-layout">
+            <img src="https://static1.purebreak.com.br/articles/9/10/42/29/@/442929-dio-brando-e-um-vilao-bisexual-de-jojo-700x700-1.jpg" alt="">
+            <div class="player-row">
+                <span id="player-name-top" class="player-name">IxculaChess v0.0.1</span>
+                <span id="player-ranking-top" class="player-ranking">(∞)</span>
+                <span class="fi fi-jp"></span></span>
+            </div>
+        </div>
+
+        <div id="board-layout-chessboard">
+
+        </div>
+        <div id="board-layout-player-bottom" class="player-layout">
+            <img src="https://www.chess.com/bundles/web/images/noavatar_l.84a92436.gif" alt="">
+            <div class="player-row">
+                <span id="player-name-bottom" class="player-name">Player</span>
+                <span id="player-ranking-bottom" class="player-ranking">(1000)</span>
+                <span class="fi fi-br"></span></span>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="board-layout-sideboard">
+        <div id="board-layout-moves-container">
+            <h3>Controllers</h3>
+            <div>
+                <label style="margin:5px" for="customRange1" class="form-label">Depth</label><span id="danger" data-toggle="tooltip" data-placement="right" title="Placing depth above 3 will cause a high processing time." class="badge bg-danger">!</span>
+                <input type="range" class="form-range" min="1" max="4" id="depth" value="3" onchange="depthWarning()">
+            </div>
+            <div id="fen"></div>
+            <div id="record"></div>
+            <div id="buttons">
+                <button type="button" class="btn btn-primary" onclick="reset()">Play as White</button>
+                <button type="button" class="btn btn-primary" onclick="invert()">Play as Black</button>
+                <button type="button" class="btn btn-primary" onclick="startSpeech()">Speak Start</button>
+                <button type="button" class="btn btn-primary" onclick="stopSpeech()">Speak Stop</button>
+            </div>
+            <div id="status">
+                <img src="{{url_for('static',filename='img/loading.gif')}}" height="20px" width="20px">
+            </div>
+        </div>
+        <!-- <div>
+        
+            <div id="config">
                 <div>
-                    <label style="margin:5px" for="customRange1" class="form-label">Depth</label><span id="danger" data-toggle="tooltip" data-placement="right" title="Placing depth above 3 will cause a high processing time." class="badge bg-danger">!</span>
-                    <input type="range" class="form-range" min="1" max="4" id="depth" value="3" onchange="depthWarning()">
+                    <label style="margin:5px" for="customRange1" >Depth</label><span id="danger" data-toggle="tooltip" data-placement="right" title="Placing depth above 3 will cause a high processing time." class="badge bg-danger">!</span>
+                    <input type="range"  min="1" max="4" id="depth" value="3" onchange="depthWarning()">
                 </div>
                 <div id="fen"></div>
                 <div id="record"></div>
                 <div id="buttons">
-                    <button type="button" class="btn btn-primary" onclick="reset()">Play as White</button>
-                    <button type="button" class="btn btn-primary" onclick="invert()">Play as Black</button>
-                    <button type="button" class="btn btn-primary" onclick="startSpeech()">Speak Start</button>
-                    <button type="button" class="btn btn-primary" onclick="stopSpeech()">Speak Stop</button>
+                    <button type="button" onclick="reset()">Play as White</button>
+                    <button type="button" onclick="invert()">Play as Black</button>
+                    <button type="button" onclick="startSpeech()">Speak Start</button>
+                    <button type="button" onclick="stopSpeech()">Speak Stop</button>
                 </div>
                 <div id="status">
                     <img src="{{url_for('static',filename='img/loading.gif')}}" height="20px" width="20px">
                 </div>
             </div>  
-        </div>
+        </div> -->
     </div>
-    
     
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>

@@ -83,7 +83,6 @@ function onDragStart (source, piece, position, orientation) {
     }
 }
 
-var board = Chessboard('myBoard', config)
 socket.on('thinking', function(msg) {
     board.draggable = false;
     if(msg == true) {
@@ -101,3 +100,6 @@ socket.on('game_state', function(msg) {
     $("#fen").text(board.fen());
     board.draggable = true;
 });
+
+var board = Chessboard('board-layout-chessboard', config)
+$(window).resize(board.resize)
