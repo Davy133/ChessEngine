@@ -70,6 +70,22 @@ class ChessEngine:
         self.game_over = False
         self.turn = 'w'
         self.winner = None
+        self.orientation = 'white'
+
+    def invert(self, orientation):
+        if(orientation == 'black'):
+            self.orientation = 'black'
+            self.make_move(self.get_best_move(1))
+        if(orientation == 'white'):
+            self.orientation = 'white'
+    
+    def reset(self):
+        if(self.orientation == 'black'):
+            self.make_move(self.get_best_move(1))
+        self.board.reset()
+        self.game_over = False
+        self.turn = 'w'
+        self.winner = None
 
     def minimax(self, depth, alpha, beta, isMaximizingPlayer, board=None):
         if(board is None):
