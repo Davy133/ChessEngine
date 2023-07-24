@@ -2,8 +2,6 @@
 ![GitHub last commit (by committer)](https://img.shields.io/github/last-commit/Davy133/ChessEngine) </br>
 ![ChessEngine♟](https://github.com/Davy133/ChessEngine/assets/55928285/d04cdc09-537c-4f61-8dea-edcb2fd6e947)
 
-Integrantes do grupo: NATAN HUGO CARVALHO EVANGELISTA, SALOMÃO DAVY DOS SANTOS COÊLHO, TAMIRES SANTIAGO OLIVEIRA, ALVARO LUIZ SANTOS NASCIMENTO
-
 ChessEngine é um bot de xadrez desenvolvido em Python que utiliza a biblioteca Flask e Flask-SocketIO para criar uma interface web interativa para jogar xadrez contra o bot. O bot utiliza uma engine de xadrez personalizada chamada `chessEngine` para calcular os melhores movimentos.
 
 ## Funcionalidades
